@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +11,7 @@ import { ErrorDialogComponent } from './error-dialog/errordialog.component';
 import { LoginService } from './services/login.service';
 import { ErrorDialogService } from './error-dialog/errordialog.service';
 
-import { HttpConfigInterceptor} from './interceptor/httpconfig.interceptor';
+import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 
 @NgModule({
   declarations: [

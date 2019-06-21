@@ -23,11 +23,11 @@ export class AuthService {
     return this.http.post<Token>('http://localhost:3000/api/login', { email, password });
   }
 
-  /**
-   * TODO: carefuly implement the following function
-   */
   isAuthenticated(): boolean {
-    return this.jwtHelper.isTokenExpired(this.token);
+    return this.jwtHelper.isTokenExpired(this.getToken);
   }
 
+  logout() {
+    this.setToken = '';
+  }
 }

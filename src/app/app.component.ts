@@ -7,7 +7,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular-Interceptor';
+  title = 'Papros';
   constructor(public authService: AuthService) {
     this.authService.login({}).subscribe(data => {
       console.log(data);

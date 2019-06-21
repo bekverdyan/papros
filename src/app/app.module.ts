@@ -13,12 +13,14 @@ import { ErrorDialogService } from './error-dialog/errordialog.service';
 
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { LoginComponent } from './login/login.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorDialogComponent,
-    LoginComponent
+    LoginComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { Token } from '../types/token';
 
 @Injectable()
 export class AuthService {
 
-  private authToken: string;
+  private token: string;
 
-  public set token(value: string) {
-    this.authToken = value;
+  public set setToken(value: string) {
+    this.token = value;
   }
 
-  public get token(): string {
-    return this.authToken;
+  public get getToken(): string {
+    return this.token;
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
-  login(email: string, password: string): Observable<Token> {
+  authenticate(email: string, password: string): Observable<Token> {
     return this.http.post<Token>('http://localhost:3000/api/login', { email, password });
   }
 
-  getCustomerDetails() {
-    return this.http.get('http://localhost:3000/customers/details');
+  /**
+   * TODO: carefuly implement the following function
+   */
+  isAuthenticated(): boolean {
+    return this.jwtHelper.isTokenExpired(this.token);
   }
 
 }

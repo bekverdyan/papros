@@ -12,11 +12,13 @@ import { AuthService } from './services/auth.service';
 import { ErrorDialogService } from './error-dialog/errordialog.service';
 
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

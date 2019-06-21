@@ -1,15 +1,25 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import 'rxjs/operator/map';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Token } from '../types/token';
 
 @Injectable()
 export class AuthService {
 
+  private authToken: string;
+
+  public set token(value: string) {
+    this.authToken = value;
+  }
+
+  public get token(): string {
+    return this.authToken;
+  }
+
   constructor(private http: HttpClient) { }
 
-  login(data) {
-    data = { email: 'admin@example.com', password: 'Test@123' };
-    return this.http.post('http://localhost:3000/api/login', data);
+  login(email: string, password: string): Observable<Token> {
+    return this.http.post<Token>('http://localhost:3000/api/login', { email, password });
   }
 
   getCustomerDetails() {

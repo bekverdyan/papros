@@ -11,15 +11,18 @@ import {
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-  constructor(public errorDialogService: ErrorDialogService) { }
+
+  constructor(private auth: AuthService, public errorDialogService: ErrorDialogService) { }
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token: string = localStorage.getItem('token');
+    const token: string = this.auth.getToken;
 
     if (token) {
-      request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
+      request = request.clone({ headers: request.headers.set('Authorization', token) });
     }
 
     if (!request.headers.has('Content-Type')) {

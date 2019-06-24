@@ -7,6 +7,8 @@ import { Token } from '../types/token';
 @Injectable()
 export class AuthService {
 
+  private jwtHelper = new JwtHelperService();
+
   private token: string;
 
   public set setToken(value: string) {
@@ -17,9 +19,9 @@ export class AuthService {
     return this.token;
   }
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient) { }
 
-  authenticate(email: string, password: string): Observable<Token> {
+  login(email: string, password: string): Observable<Token> {
     return this.http.post<Token>('http://localhost:3000/api/login', { email, password });
   }
 

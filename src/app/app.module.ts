@@ -1,18 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './error-dialog/errordialog.component';
-
-import { AuthService } from './services/auth.service';
 import { ErrorDialogService } from './error-dialog/errordialog.service';
-
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
 import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
@@ -25,6 +23,8 @@ import { UsersListComponent } from './users-list/users-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
     HttpClientModule

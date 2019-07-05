@@ -29,13 +29,7 @@ export class LoginComponent implements OnInit {
     const val = this.form.value;
 
     if (val.email && val.password) {
-      this.authService.login(val.email, val.password)
-        .subscribe(
-          (value) => {
-            this.authService.setToken = value.token;
-            this.router.navigateByUrl('/users');
-          }
-        );
+      this.authService.authenticate(val.email, val.password);
     }
   }
 }

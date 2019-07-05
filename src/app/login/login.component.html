@@ -1,16 +1,10 @@
-<form [formGroup]="form">
-  <fieldset>
-    <legend>Login</legend>
-    <div class="form-field">
-      <label>Email:</label>
-      <input name="email" formControlName="email">
-    </div>
-    <div class="form-field">
-      <label>Password:</label>
-      <input name="password" formControlName="password" type="password">
-    </div>
-  </fieldset>
-  <div class="form-buttons">
-    <button class="button button-primary" (click)="login()">Login</button>
-  </div>
+<form class="login-form" [formGroup]="form">
+  <mat-form-field class="login-full-width">
+    <input matInput placeholder="Email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="login-full-width">
+    <input matInput placeholder="Password" type="password" formControlName="password">
+  </mat-form-field>
+  <button mat-button (click)="login()">Login</button>
 </form>

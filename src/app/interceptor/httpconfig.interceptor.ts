@@ -12,14 +12,15 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { SessionStorageService } from 'ngx-webstorage';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AuthService, public errorDialogService: ErrorDialogService) { }
+  constructor(private sessionStorage: SessionStorageService, public errorDialogService: ErrorDialogService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token: string = this.auth.getToken;
+    const token: string = this.sessionStorage.retrieve('token');
 
     if (token) {
       request = request.clone({ headers: request.headers.set('Authorization', token) });

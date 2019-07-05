@@ -35,6 +35,6 @@ export class AuthService {
   }
 
   logout() {
-    this.setToken = '';
+    this.sessionStorage.store('token', '');
   }
 }

@@ -10,7 +10,11 @@ export class AuthService {
 
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private sessionStorage: SessionStorageService, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private sessionStorage: SessionStorageService,
+    private router: Router
+  ) { }
 
   authenticate(email: string, password: string) {
     this.http.post<Token>('http://localhost:3000/api/login', { email, password })

@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <div *ngIf="isAuthenticated(); then signInButton else signOutButton"></div>
+  <ng-template #signInButton>
+    <button mat-button (click)="signOut()">Sign Out</button>
+  </ng-template>
+  <ng-template #signOutButton>
+    <button mat-button (click)="signIn()">Sign In</button>
+  </ng-template>
+</mat-toolbar>
